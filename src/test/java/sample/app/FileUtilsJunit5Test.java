@@ -47,14 +47,16 @@ public class FileUtilsJunit5Test {
 
 		File srcDir = Files.createDirectories(tempDir.resolve("source")).toFile();
 
-		for (int i = 0; i < 10; i++)
+		int noOfFiles = 10;
+		
+		for (int i = 0; i < noOfFiles; i++)
 			Files.createFile(srcDir.toPath().resolve(i + "-sample-file-2-move.txt")).toFile();
 
 		File destDir = Files.createDirectories(tempDir.resolve("destination")).toFile();
 
 		FileUtils.moveFiles(srcDir, destDir);
 
-		assertAll(() -> assertEquals(10, destDir.list().length));
+		assertAll(() -> assertEquals(noOfFiles, destDir.list().length));
 
 	}
 	
@@ -68,7 +70,7 @@ public class FileUtilsJunit5Test {
 		for (int i = 0; i < noOfFiles; i++)
 			Files.createFile(srcDir.toPath().resolve(i + "-sample-file-2-move.txt")).toFile();
 		
-		Files.createDirectories(srcDir.toPath().resolve("sample-directory.txt")).toFile();
+		Files.createDirectories(srcDir.toPath().resolve("sample-directory")).toFile();
 
 		File destDir = Files.createDirectories(tempDir.resolve("destination")).toFile();
 
